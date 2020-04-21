@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Delft",
+    "slotsInUse": 2,
+    "slotsFree": 5,
+    "coordinates": [
+      4.354346485531551,
+      51.95955958930821
+    ]
+  },
+  {
+    "name": "Gorinchem",
+    "slotsInUse": 2,
+    "slotsFree": 5,
+    "coordinates": [
+      4.967879742868149,
+      51.828220245547584
+    ]
+  },
+  {
+    "name": "New York",
+    "slotsInUse": 2,
+    "slotsFree": 5,
+    "coordinates": [
+      -73.90547101031177,
+      40.56038931644238
+    ]
+  },
+  {
+    "name": "New York",
+    "slotsInUse": 2,
+    "slotsFree": 5,
+    "coordinates": [80.56882333379099, 7.1600649000609025]
+  },
+  {
+    "name": "Afrika",
+    "slotsInUse": 2,
+    "slotsFree": 5,
+    "coordinates": [
+      20.04421420361632,
+      -34.80762786494938
+    ]
+  }
+]
