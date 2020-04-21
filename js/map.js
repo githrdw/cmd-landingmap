@@ -81,7 +81,7 @@ function fetchSiteLocation(site) {
 }
 // Fetch all sites from local (static) api
 function fetchFeatures() {
-  fetch("api/sites.json")
+  fetch("https://githrdw.github.io/cmd-landingmap/api/sites.json")
     .then(d => (d.json()))
     .then(placeFeatures)
 }
