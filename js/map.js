@@ -43,9 +43,7 @@ function toggleDetails(value) {
     }, 1500)
   }
   drawMask(0)
-  setTimeout(() => {
-    map.resize()
-  }, 1000)
+  map.resize()
 
 }
 function goTo(index) {
@@ -67,8 +65,8 @@ function goTo(index) {
 
 // Slowly move the earth around
 function rotateCamera(timestamp) {
-  const [x, y] = [(timestamp / 300) % 360, 10]
-  map.flyTo({ ...defaultMap, center: [x, y] });
+  const [x, y] = [(timestamp / 200) % 360, 14]
+  map.flyTo({ ...defaultMap, center: [x, y], speed: 3 });
   cameraFrame = requestAnimationFrame(rotateCamera);
 }
 

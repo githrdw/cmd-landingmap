@@ -31,7 +31,6 @@ html, body {
   height: 100%;
   position: relative;
   overflow: hidden;
-  transition: height 1s ease;
 }
 
 body.details #location {
@@ -182,3 +181,4 @@ body.details #details {
   position: absolute;
   animation: pulsate 2s ease-out infinite;
 }
+
