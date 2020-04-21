@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoicHV1YiIsImEiOiJjazk0bmljZ3gwMWtmM21xcDFoZnBndGVzIn0.z8bgLwWqLseyyFYQifQmVQ';
-owmToken = 'c56ff0d46eb52b53ce8cb19cf2afa5ca'
 
+const owmToken = 'c56ff0d46eb52b53ce8cb19cf2afa5ca'
 const animationTime = 10000
 const defaultMap = Object.freeze({
   container: 'map',
@@ -79,12 +79,13 @@ function fetchSiteLocation(site) {
       .then(resolve)
   })
 }
-
+// Fetch all sites from local (static) api
 function fetchFeatures() {
   fetch("api/sites.json")
     .then(d => (d.json()))
     .then(placeFeatures)
 }
+// Fetch weather data
 function fetchWeather(site) {
   const [lon, lat] = site.coordinates
   return new Promise((resolve) => {
