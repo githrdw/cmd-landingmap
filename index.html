@@ -8,12 +8,16 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
   <link href='./css/style.css' rel='stylesheet' />
   <script src="./js/map.js" defer></script>
+  <script src="./js/itsi.js" defer></script>
   <script src="https://code.iconify.design/1/1.0.4/iconify.min.js" defer></script>
   <title>Document</title>
 </head>
 
 <body class=W>
   <main>
+    <section id="hint">
+      <h1>Select spot to land</h1>
+    </section>
     <section id="location">
       <div id='map'></div>
     </section>
@@ -28,28 +32,62 @@
     </section>
     <section id="details">
       <section id="details--content">
-        <fieldset id="details--tab">
-          <legend data-site="name"></legend>
-          <span><strong>Country</strong></span>
-          <span data-site="country">-</span>
-          <span><strong>Place</strong></span>
-          <span data-site="place">-</span>
-          <span><strong>Landing slots</strong></span>
-          <section><span data-site="slotsFree">-</span> free / <span data-site="slotsInUse">-</span> used</section>
-          <aside></aside>
+        <fieldset id="ct-general" class="tab">
+          <legend>SITE: <span data-site="name"></span></legend>
+          <div class="flex">
+            <div class="box">
+              <span><strong>Country</strong></span>
+              <span data-site="country">-</span>
+              <span><strong>Place</strong></span>
+              <span data-site="place">-</span>
+              <span><strong>Landing slots</strong></span>
+              <section><span data-site="slotsFree">-</span> free / <span data-site="slotsInUse">-</span> used</section>
+            </div>
+            <div class="box">
+              <span><strong>Temperature</strong></span>
+              <span data-site="temp">-</span>&#176;C
+              <span><strong>Wind speed</strong></span>
+              <span data-site="speed">-</span>
+              <span><strong>Wind degrees</strong></span>
+              <span data-site="deg">-</span> deg
+            </div>
+          </div>
+        </fieldset>
+        <fieldset id="ct-landing" class="tab">
+          <span><strong>Latitude</strong></span>
+          <span data-site="lat">-</span>
+          <span><strong>Longitude</strong></span>
+          <span data-site="long">-</span>
+        </fieldset>
+        <fieldset id="ct-chat" class="tab">
+          <span><strong>Communication</strong></span>
+          <div class="flex">
+            <div class="box">
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="box">
+              <label for="chat-msg">Message:</label><br/>
+              <input type="text" id="chat-msg" maxlength="64"/>
+            </div>
+          </div>
         </fieldset>
       </section>
       <section id="details--actions">
-        <a class="button icon" id="go-back">
+        <a class="button icon" id="go-back" href="#">
           <span class="iconify" data-icon="mdi:arrow-left"></span>
         </a>
-        <a class="button rounded">
+        <a class="button rounded" href="#">
           <span class="iconify medium rotate-45" data-icon="mdi:rocket"></span>
           <span>FLY</span>
         </a>
-        <a class="button icon" href="javascript:toggleDetails(false)">
-          <span class="iconify" data-icon="mdi:information"></span>
-        </a>
+        <a class="button icon" href="#"></a>
       </section>
     </section>
   </main>

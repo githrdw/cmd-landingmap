@@ -1,4 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoicHV1YiIsImEiOiJjazk0bmljZ3gwMWtmM21xcDFoZnBndGVzIn0.z8bgLwWqLseyyFYQifQmVQ';
+owmToken = 'c56ff0d46eb52b53ce8cb19cf2afa5ca'
 
 const animationTime = 10000
 const defaultMap = Object.freeze({
@@ -42,9 +43,8 @@ function toggleDetails(value) {
       rotateCamera(0)
     }, 1500)
   }
-  drawMask(0)
+  if ((value && !selectedSite) || !value) drawMask(0)
   map.resize()
-
 }
 function goTo(index) {
   preventCamera();
@@ -57,7 +57,7 @@ function goTo(index) {
       pitch: 45,
       center: site.coordinates
     })
-  }, 1500)
+  }, selectedSite ? 0 : 1500)
   selectedSite = index
   fillTab(index)
 
@@ -72,9 +72,9 @@ function rotateCamera(timestamp) {
 
 // Fetch site specs from coordinates
 function fetchSiteLocation(site) {
-  const [long, lat] = site.coordinates
+  const [lon, lat] = site.coordinates
   return new Promise((resolve) => {
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${long},${lat}.json?access_token=${mapboxgl.accessToken}`)
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=${mapboxgl.accessToken}`)
       .then(d => (d.json()))
       .then(resolve)
   })
@@ -85,7 +85,14 @@ function fetchFeatures() {
     .then(d => (d.json()))
     .then(placeFeatures)
 }
-
+function fetchWeather(site) {
+  const [lon, lat] = site.coordinates
+  return new Promise((resolve) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${owmToken}`)
+      .then(d => (d.json()))
+      .then(resolve)
+  })
+}
 function updateDOM(site) {
   const keys = Object.keys(site)
   for (var i in keys) {
@@ -122,8 +129,10 @@ function fillTab(index) {
   // Check if location data is fetched already
   if (site._fetched) updateDOM(site)
   else {
-    fetchSiteLocation(site)
-      .then(({ features }) => {
+    const loc = fetchSiteLocation(site)
+    const weather = fetchWeather(site)
+    Promise.all([loc, weather])
+      .then(([{ features }, { main, wind }]) => {
         let inSite = {}
         for (var i in features || {}) {
           const f = features[i]
@@ -135,7 +144,11 @@ function fillTab(index) {
         }
 
         // Update values in DOM
-        const updatedSite = { ...site, ...inSite, _fetched: true }
+        const [lat, long] = site.coordinates
+        let updatedSite = {
+          ...site, ...inSite, lat, long, ...main, ...wind, _fetched: true
+        }
+        updatedSite.temp = (main.temp - 273.15).toFixed(1)
         sites[index] = updatedSite
         updateDOM(updatedSite)
       })

@@ -33,6 +33,22 @@ main {
   flex-wrap: wrap;
 }
 
+#hint {
+  position: fixed;
+  z-index: 3;
+  background: rgba(52, 169, 110, 0.75);
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  font-family: Nasa;
+  top: 0%;
+  transition: all 1s ease;
+}
+
+body.details #hint {
+  top: -100%;
+}
+
 #location {
   width: 100%;
   height: 100%;
@@ -90,6 +106,7 @@ body.details #location--actions {
 }
 
 #details {
+  display: flex;
   color: white;
   width: 0%;
   top: 50%;
@@ -102,11 +119,6 @@ body.details #location--actions {
   background: #171E25;
 }
 
-body.details #details {
-  width: 100%;
-  opacity: 1;
-}
-
 #details--content {
   width: 100%;
   padding: 0;
@@ -114,21 +126,31 @@ body.details #details {
   margin-bottom: 72px;
 }
 
-#details--tab {
-  margin: 0 16px;
+.tab {
+  margin: 0 16px -2px 16px;
   border: 2px solid #34a96e;
   display: flex;
+  flex-wrap: wrap;
 }
 
-#details--tab>legend {
+.tab>legend {
   border: 2px solid #34a96e;
   padding: 6px 12px;
 }
 
-#details--tab strong {
+.tab strong {
   color: #34a96e;
   padding: 8px 0 6px 0;
   display: block;
+}
+
+.tab .flex {
+  display: flex
+}
+
+.tab .box {
+  flex: 0 0 50%;
+  width: 50%;
 }
 
 #details--actions {
@@ -139,6 +161,10 @@ body.details #details {
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+#chat-msg {
+  width: 80%;
 }
 
 .button {
@@ -152,6 +178,8 @@ body.details #details {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  color: #34a96e;
+  text-decoration: none;
   border: 2px solid #34a96e;
   font-family: Nasa;
 }
@@ -189,11 +217,31 @@ body.details #details {
   animation: pulsate 2s ease-out infinite;
 }
 
-@media (min-width: 769px) {
+@media (max-width: 380px) {
+  .tab .box {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 769px), (max-aspect-ratio: 83 / 78) {
+  body.details #details {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 769px) and (min-aspect-ratio: 83 / 78) {
+  #details {
+    width: 0%;
+    height: 100%;
+    top: 0;
+    opacity: 1;
+  }
   body.details #details {
     width: 50%;
-    height: 100%;
-    justify-content: center;
+  }
+  #details--content {
+    align-self: center;
   }
   body.details #location {
     width: 50%;
