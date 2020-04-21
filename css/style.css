@@ -26,6 +26,13 @@ html, body {
   background: #171E25
 }
 
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 #location {
   width: 100%;
   height: 100%;
@@ -53,6 +60,7 @@ body.details #location {
   bottom: 0%;
   width: 100%;
   height: 100%;
+  left: 0%;
   pointer-events: none;
   z-index: 2;
   background-size: 100% 100%;
@@ -83,29 +91,27 @@ body.details #location--actions {
 
 #details {
   color: white;
-  height: 50%;
-  width: 100%;
+  width: 0%;
   top: 50%;
+  right: 0;
   position: absolute;
   z-index: 2;
   overflow: hidden;
-  transform: translateX(-100%);
   opacity: 0;
   transition: all .5s ease;
-  background: #171E25
+  background: #171E25;
 }
 
 body.details #details {
-  transform: translateX(0);
+  width: 100%;
   opacity: 1;
 }
 
 #details--content {
-  position: absolute;
-  top: 0;
   width: 100%;
   padding: 0;
   font-family: Nasa;
+  margin-bottom: 72px;
 }
 
 #details--tab {
@@ -127,11 +133,12 @@ body.details #details {
 
 #details--actions {
   color: #34a96e;
-  position: absolute;
+  background: #171E25;
+  position: fixed;
   bottom: 0;
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .button {
@@ -182,3 +189,22 @@ body.details #details {
   animation: pulsate 2s ease-out infinite;
 }
 
+@media (min-width: 769px) {
+  body.details #details {
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+  }
+  body.details #location {
+    width: 50%;
+    height: 100%;
+  }
+  body.details #location--mask {
+    bottom: 0;
+    height: 100%;
+    left: -45%;
+  }
+  #details--actions {
+    width: 50%;
+  }
+}

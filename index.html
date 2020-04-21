@@ -13,44 +13,46 @@
 </head>
 
 <body class=W>
-  <section id="location">
-    <div id='map'></div>
-  </section>
-  <section id="location--mask"></section>
-  <section id="location--actions">
-    <a class="button icon" id="zoom-out" href="#">
-      <span class="iconify" data-icon="mdi:magnify-minus"></span>
-    </a>
-    <a class="button icon" id="zoom-in" href="#">
-      <span class="iconify" data-icon="mdi:magnify-plus"></span>
-    </a>
-  </section>
-  <section id="details">
-    <section id="details--content">
-      <fieldset id="details--tab">
-        <legend data-site="name"></legend>
-        <span><strong>Country</strong></span>
-        <span data-site="country">-</span>
-        <span><strong>Place</strong></span>
-        <span data-site="place">-</span>
-        <span><strong>Landing slots</strong></span>
-        <section><span data-site="slotsFree">-</span> free / <span data-site="slotsInUse">-</span> used</section>
-        <aside></aside>
-      </fieldset>
+  <main>
+    <section id="location">
+      <div id='map'></div>
     </section>
-    <section id="details--actions">
-      <a class="button icon" id="go-back">
-        <span class="iconify" data-icon="mdi:arrow-left"></span>
+    <section id="location--mask"></section>
+    <section id="location--actions">
+      <a class="button icon" id="zoom-out" href="#">
+        <span class="iconify" data-icon="mdi:magnify-minus"></span>
       </a>
-      <a class="button rounded">
-        <span class="iconify medium rotate-45" data-icon="mdi:rocket"></span>
-        <span>FLY</span>
-      </a>
-      <a class="button icon" href="javascript:toggleDetails(false)">
-        <span class="iconify" data-icon="mdi:information"></span>
+      <a class="button icon" id="zoom-in" href="#">
+        <span class="iconify" data-icon="mdi:magnify-plus"></span>
       </a>
     </section>
-  </section>
+    <section id="details">
+      <section id="details--content">
+        <fieldset id="details--tab">
+          <legend data-site="name"></legend>
+          <span><strong>Country</strong></span>
+          <span data-site="country">-</span>
+          <span><strong>Place</strong></span>
+          <span data-site="place">-</span>
+          <span><strong>Landing slots</strong></span>
+          <section><span data-site="slotsFree">-</span> free / <span data-site="slotsInUse">-</span> used</section>
+          <aside></aside>
+        </fieldset>
+      </section>
+      <section id="details--actions">
+        <a class="button icon" id="go-back">
+          <span class="iconify" data-icon="mdi:arrow-left"></span>
+        </a>
+        <a class="button rounded">
+          <span class="iconify medium rotate-45" data-icon="mdi:rocket"></span>
+          <span>FLY</span>
+        </a>
+        <a class="button icon" href="javascript:toggleDetails(false)">
+          <span class="iconify" data-icon="mdi:information"></span>
+        </a>
+      </section>
+    </section>
+  </main>
 </body>
 
 </html>
