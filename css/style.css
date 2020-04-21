@@ -217,7 +217,10 @@ body.details #location--actions {
   animation: pulsate 2s ease-out infinite;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 370px) {
+  .tab .flex {
+    flex-wrap: wrap
+  }
   .tab .box {
     flex-basis: 100%;
   }
@@ -254,5 +257,12 @@ body.details #location--actions {
   }
   #details--actions {
     width: 50%;
+  }
+  #location--actions {
+    flex-direction: column;
+    width: 56px;
+    left: 0;
+    bottom:128px;
+    top:unset;
   }
 }
